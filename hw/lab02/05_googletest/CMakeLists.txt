@@ -20,3 +20,4 @@ target_link_libraries(calc_tests PRIVATE math_lib gtest_main)
 include(CTest)
 enable_testing()
 gtest_discover_tests(calc_tests)
+
