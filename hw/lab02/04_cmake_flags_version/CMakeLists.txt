@@ -1,8 +1,19 @@
+
 cmake_minimum_required(VERSION 3.15)
-project(FlagVersionProject)
 
-set(CMAKE_CXX_STANDARD 17)
+project(CalcProject VERSION 1.2.3)
 
-add_compile_options(-Wall -Wextra -Werror)
+configure_file(
+    version.h.in
+    ${CMAKE_CURRENT_BINARY_DIR}/version.h
+)
 
-add_executable(main main.cpp)
+add_executable(calculator main.cpp calc.cpp)
+
+target_include_directories(calculator PRIVATE
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+target_compile_definitions(calculator PRIVATE
+    $<$<CONFIG:Debug>:DEBUG_MODE>
+)
